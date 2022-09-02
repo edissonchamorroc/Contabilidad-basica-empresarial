@@ -20,6 +20,6 @@ public class EmpresaServicio {
     }
 
     public Empresa getEmpresa(long id){
-        return this.repositorio.getReferenceById(id);
+        return this.repositorio.findById(id).get();
     }
 }
