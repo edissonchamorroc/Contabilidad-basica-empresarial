@@ -22,4 +22,8 @@ public class EmpresaServicio {
     public Empresa getEmpresa(long id){
         return this.repositorio.findById(id).get();
     }
+
+    public Empresa postEmpresa(Empresa empresaNueva){
+        return this.repositorio.save(empresaNueva);
+    }
 }
