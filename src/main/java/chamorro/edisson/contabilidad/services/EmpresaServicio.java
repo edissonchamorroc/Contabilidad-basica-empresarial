@@ -15,15 +15,22 @@ public class EmpresaServicio {
         this.repositorio = repositorio;
     }
 
-    public List<Empresa> getEmpresas(){
+    public List<Empresa> getEmpresas() {
         return this.repositorio.findAll();
     }
 
-    public Empresa getEmpresa(long id){
+    public Empresa getEmpresa(long id) {
         return this.repositorio.findById(id).get();
     }
 
-    public Empresa postEmpresa(Empresa empresaNueva){
+    public Empresa postEmpresa(Empresa empresaNueva) {
         return this.repositorio.save(empresaNueva);
+    }
+
+    public void actualizarEmpresa(long id, Empresa actualizarEmpresa) {
+        if (this.repositorio.findById(id).isPresent()) {
+            this.repositorio.save(actualizarEmpresa);
+        }
+
     }
 }

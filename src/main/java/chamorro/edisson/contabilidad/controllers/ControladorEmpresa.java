@@ -13,20 +13,27 @@ public class ControladorEmpresa {
 
     EmpresaServicio servicio;
 
-    public ControladorEmpresa(EmpresaServicio servicio){
-        this.servicio=servicio;
+    public ControladorEmpresa(EmpresaServicio servicio) {
+        this.servicio = servicio;
     }
 
-    @GetMapping("/empresas")
-    public List<Empresa> getEmpresas(){
+    @GetMapping("")
+    public List<Empresa> getEmpresas() {
         return this.servicio.getEmpresas();
     }
 
     @GetMapping("/empresa/{id}")
-    public Empresa getEmpresa(@PathVariable("id") int id){return this.servicio.getEmpresa(id);}
+    public Empresa getEmpresa(@PathVariable("id") int id) {
+        return this.servicio.getEmpresa(id);
+    }
 
-    @PostMapping("/empresa")
-    public Empresa crearEmpresa(@RequestBody Empresa empresaNueva ){
+    @PostMapping("")
+    public Empresa crearEmpresa(@RequestBody Empresa empresaNueva) {
         return this.servicio.postEmpresa(empresaNueva);
+    }
+
+    @PatchMapping("/{id}")
+    public void patchEmpresa(@PathVariable("id") int id,@RequestBody Empresa actualizarEmpresa) {
+        this.servicio.actualizarEmpresa(id,actualizarEmpresa);
     }
 }
