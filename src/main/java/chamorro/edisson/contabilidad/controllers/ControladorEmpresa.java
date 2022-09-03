@@ -31,9 +31,9 @@ public class ControladorEmpresa {
         return this.servicio.postEmpresa(empresaNueva);
     }
 
-    @PutMapping("/{id}")
-    public void patchEmpresa(@PathVariable("id") int id) {
-        this.servicio.patchEmpresa(this.getEmpresa(id));
+    @PatchMapping("/{id}")
+    public void patchEmpresa(@PathVariable("id") long id,@RequestBody Empresa datos) {
+        this.servicio.patchEmpresa(id,datos);
     }
 
     @DeleteMapping("/{id}")
