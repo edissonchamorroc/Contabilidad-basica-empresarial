@@ -27,10 +27,11 @@ public class EmpresaServicio {
         return this.repositorio.save(empresaNueva);
     }
 
-    public void actualizarEmpresa(long id, Empresa actualizarEmpresa) {
-        if (this.repositorio.findById(id).isPresent()) {
-            this.repositorio.save(actualizarEmpresa);
-        }
+    public void patchEmpresa(Empresa actualizarEmpresa) {
+        this.repositorio.save(actualizarEmpresa);
+    }
 
+    public void deleteEmpresa(long id){
+        this.repositorio.deleteById(id);
     }
 }

@@ -2,7 +2,6 @@ package chamorro.edisson.contabilidad.controllers;
 
 import chamorro.edisson.contabilidad.entities.Empresa;
 import chamorro.edisson.contabilidad.services.EmpresaServicio;
-import org.hibernate.annotations.Parameter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class ControladorEmpresa {
         return this.servicio.getEmpresas();
     }
 
-    @GetMapping("/empresa/{id}")
+    @GetMapping("/{id}")
     public Empresa getEmpresa(@PathVariable("id") int id) {
         return this.servicio.getEmpresa(id);
     }
@@ -32,8 +31,13 @@ public class ControladorEmpresa {
         return this.servicio.postEmpresa(empresaNueva);
     }
 
-    @PatchMapping("/{id}")
-    public void patchEmpresa(@PathVariable("id") int id,@RequestBody Empresa actualizarEmpresa) {
-        this.servicio.actualizarEmpresa(id,actualizarEmpresa);
+    @PutMapping("/{id}")
+    public void patchEmpresa(@PathVariable("id") int id) {
+        this.servicio.patchEmpresa(this.getEmpresa(id));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEmpresa(@PathVariable("id") int id){
+        this.servicio.deleteEmpresa(id);
     }
 }
