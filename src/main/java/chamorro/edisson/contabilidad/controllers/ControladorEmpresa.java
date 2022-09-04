@@ -2,6 +2,7 @@ package chamorro.edisson.contabilidad.controllers;
 
 import chamorro.edisson.contabilidad.entities.Empresa;
 import chamorro.edisson.contabilidad.services.EmpresaServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +11,9 @@ import java.util.List;
 @RequestMapping("/enterprises")
 public class ControladorEmpresa {
 
+    @Autowired
     EmpresaServicio servicio;
 
-    public ControladorEmpresa(EmpresaServicio servicio) {
-        this.servicio = servicio;
-    }
 
     @GetMapping("")
     public List<Empresa> getEmpresas() {

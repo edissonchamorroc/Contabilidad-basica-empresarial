@@ -1,8 +1,14 @@
 package chamorro.edisson.contabilidad.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 public class Empleado {
     @Id
@@ -13,11 +19,12 @@ public class Empleado {
     private String nombre;
     @Column(name = "email")
     private String email;
-    @OneToMany(mappedBy = "empleado")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "empleado")
     private List<MovimientoDinero> movimientoDineros;
 
+    @JsonIgnore
     @JoinColumn(name = "id_empresa")
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.LAZY)
     private Empresa empresa;
 
 
@@ -25,43 +32,4 @@ public class Empleado {
 
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<MovimientoDinero> getMovimientoDineros() {
-        return movimientoDineros;
-    }
-
-    public void setMovimientoDineros(List<MovimientoDinero> movimientoDineros) {
-        this.movimientoDineros = movimientoDineros;
-    }
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresaList(Empresa empresa) {
-        this.empresa = empresa;
-    }
 }
