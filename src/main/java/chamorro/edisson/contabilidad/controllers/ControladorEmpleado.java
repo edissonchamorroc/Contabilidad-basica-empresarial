@@ -4,7 +4,9 @@ import chamorro.edisson.contabilidad.entities.Empleado;
 import chamorro.edisson.contabilidad.entities.Empresa;
 import chamorro.edisson.contabilidad.services.EmpleadoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -27,8 +29,9 @@ public class ControladorEmpleado {
     }
 
     @PostMapping("")
-    public Empleado crearEmpleado(@RequestBody Empleado empresaNueva) {
-        return this.servicio.postEmpleado(empresaNueva);
+    public RedirectView crearEmpleado(@ModelAttribute Empleado empleadoNuevo, Model model) {
+        model.addAttribute(empleadoNuevo);
+        return new RedirectView("/RegistroExitoso");
     }
 
     @PatchMapping("/{id}")
