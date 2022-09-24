@@ -1,7 +1,13 @@
 package chamorro.edisson.contabilidad.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
 public class MovimientoDinero {
     @Id
@@ -13,43 +19,14 @@ public class MovimientoDinero {
     @Column(name = "Concepto")
     private String concepto;
 
-    @JoinColumn(name = "id_empresa")
-    @ManyToOne()
+    @JsonIgnore
+    @JoinColumn(name = "id_emp")
+    @ManyToOne(fetch = FetchType.LAZY)
     private Empleado empleado;//es el mismo nombre plasmado en clase Empleado linea 13
 
     public MovimientoDinero(    ) {
 
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public float getMonto() {
-        return monto;
-    }
-
-    public void setMonto(float monto) {
-        this.monto = monto;
-    }
-
-    public String getConcepto() {
-        return concepto;
-    }
-
-    public void setConcepto(String concepto) {
-        this.concepto = concepto;
-    }
-
-    public Empleado getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(Empleado empleado) {
-        this.empleado = empleado;
-    }
 }

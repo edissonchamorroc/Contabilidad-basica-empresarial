@@ -11,14 +11,15 @@ import java.util.List;
 @Setter
 @Entity
 public class Empleado {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id_emp")
     private long id;
     @Column(name = "Nombre")
     private String nombre;
     @Column(name = "email")
     private String email;
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "empleado")
     private List<MovimientoDinero> movimientoDineros;
 

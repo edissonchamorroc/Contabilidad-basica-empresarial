@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+
 @Service
 public class EmpleadoServicio {
 
@@ -31,9 +32,9 @@ public class EmpleadoServicio {
     public void patchEmpleado(long id, Empleado actualizarEmpleado) {
         Empleado empleadoActualizar = this.repositorio.findById(id).get();
         if (this.repositorio.findById(id).isPresent()) {
-            if (actualizarEmpleado.getId()!= 0) empleadoActualizar.setId(actualizarEmpleado.getId());
-            if (actualizarEmpleado.getNombre()!= null) empleadoActualizar.setNombre(actualizarEmpleado.getNombre());
-            if (actualizarEmpleado.getEmail()!= null) empleadoActualizar.setEmail(actualizarEmpleado.getEmail());
+            if (actualizarEmpleado.getId() != 0) empleadoActualizar.setId(actualizarEmpleado.getId());
+            if (actualizarEmpleado.getNombre() != null) empleadoActualizar.setNombre(actualizarEmpleado.getNombre());
+            if (actualizarEmpleado.getEmail() != null) empleadoActualizar.setEmail(actualizarEmpleado.getEmail());
             this.repositorio.save(empleadoActualizar);
         }
     }
