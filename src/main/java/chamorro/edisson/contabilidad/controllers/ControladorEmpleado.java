@@ -1,8 +1,7 @@
 package chamorro.edisson.contabilidad.controllers;
 
-import chamorro.edisson.contabilidad.entities.Empleado;
-import chamorro.edisson.contabilidad.entities.Empresa;
-import chamorro.edisson.contabilidad.services.EmpleadoServicio;
+import chamorro.edisson.contabilidad.models.Empleado;
+import chamorro.edisson.contabilidad.services.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class ControladorEmpleado {
     @Autowired
-    EmpleadoServicio servicio;
+    EmpleadoService servicio;
 
     @GetMapping("")
     public List<Empleado> getEmpleados() {
@@ -24,14 +23,14 @@ public class ControladorEmpleado {
 
     @GetMapping("/{id}")
     public Empleado getEmpleado(@PathVariable("id") int id) {
-
         return this.servicio.getEmpleado(id);
     }
 
     @PostMapping("")
-    public RedirectView crearEmpleado(@ModelAttribute Empleado empleadoNuevo, Model model) {
+    public RedirectView postEmpleado(@ModelAttribute Empleado empleadoNuevo, Model model) {
         model.addAttribute(empleadoNuevo);
-        return new RedirectView("/RegistroExitoso");
+        this.servicio.postEmpleado(empleadoNuevo);
+        return new RedirectView("/lista-empleados");
     }
 
     @PatchMapping("/{id}")

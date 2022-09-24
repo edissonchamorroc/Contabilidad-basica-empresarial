@@ -1,37 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" th:href="@{/css/lr_style.css}">
+    <link rel="stylesheet" href="/css/lr_style.css">
     <title>Ingreso Sistema Contable</title>
 </head>
 <body>
-<div class="wrapper">
-    <div class="logo">
-        <img src="https://img.freepik.com/vector-gratis/atraccion-dinero-e-ingresos_74855-6573.jpg?w=740&t=st=1663507087~exp=1663507687~hmac=788064d6ef2de85abebc75a91b7b4236581d46c692cc4a934f76711d5e12899f" alt="">
-    </div>
-    <div class="text-center mt-4 name">
-        Sistema de Gestión Contable
-    </div>
-    <form class="p-3 mt-3">
-        <div class="form-field d-flex align-items-center">
-            <span class="far fa-user"></span>
-            <input type="text" name="userName" id="userName" placeholder="Username">
+<h2>Bienvenido <strong th:text="${empleado.nombre}"></strong></h2>
+<div id="main-content">
+    <div class="cont-btn">
+        <div class="btn" sec:authorize="isAuthenticated()">
+            <a href="/adm-movimientos">Sistema de Gestión de Ingresos y Egresos</a>
         </div>
-        <div class="form-field d-flex align-items-center">
-            <span class="fas fa-key"></span>
-            <input type="password" name="password" id="pwd" placeholder="Password">
+    </div>
+    <div class="cont-btn" >
+        <div class="btn" sec:authorize="isAuthenticated()">
+            <a href="/adm-empleados">Sistema de Gestión de Usuarios</a>
         </div>
-        <button class="btn mt-3">Login</button>
-    </form>
-    <div class="text-center fs-6">
-        <a href="#">Olvidó el password?</a> Or <a href="/RegistroUsuario">Registrarse</a>
+
+    </div>
+    <div class="cont-btn">
+        <div class="btn" sec:authorize="isAuthenticated()">
+            <a href="/adm-empresas">Sistema de Gestión de Empresas</a>
+        </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
 </body>
 </html>
