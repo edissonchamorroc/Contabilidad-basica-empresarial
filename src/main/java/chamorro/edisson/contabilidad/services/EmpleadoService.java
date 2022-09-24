@@ -1,8 +1,8 @@
 package chamorro.edisson.contabilidad.services;
 
 import chamorro.edisson.contabilidad.models.Empleado;
-import chamorro.edisson.contabilidad.repositories.EmpleadoRepositorio;
 
+import chamorro.edisson.contabilidad.repositories.EmpleadoRepositorio;
 import org.springframework.stereotype.Service;
 
 
