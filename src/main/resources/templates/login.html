@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/lr_style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Ingreso Usuario</title>
+</head>
+
+<body>
+<div class="#main-content">
+    <div class="cont-form">
+        <div class="form">
+            <form th:action="@{/login}" th:method="POST" th:object="${empleado}">
+            <div id="cont-form-usr"><input th:field="*{email}" type="email" name="email" id="email" placeholder="name@example.com"></div>
+            <div id="cont-form-pas"><input th:field="*{password}" type="password" name="password" id="password" placeholder="Contraseña"></div>
+            <div class="cont-form-btn"><input id="ingreso_usuario" type="submit" value="Ingresar"></div>
+                <div class="cont-form-btn"><a id="registro_usuario" href="/registro-empleado">Registrarse </a></div>
+            </form>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

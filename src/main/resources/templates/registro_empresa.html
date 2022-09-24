@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/lr_style.css}">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+<div class="wrapper">
+
+    <div class="text-center mt-4 name" th:if="${empresa.id==0}">
+        Registro de Empresa
+    </div>
+    <div class="text-center mt-4 name" th:unless="${empresa.id==0}">
+        Editar Empresa
+    </div>
+    <form th:action="@{/enterprises}" th:method="post" th:object="${empresa}" class="p-3 mt-3">
+        <input th:unless="${empresa.id==0}" type="hidden" th:field="*{id}" th:value="${empresa.id}">
+         <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input th:field="*{nombre}"  th:name="nombre_emp" type="text" name="nombre_emp" id="nombre_emp" placeholder="Nombre">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input th:field="*{direccion}" type="text" name="direccion" id="direccion" placeholder="dirección">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input th:field="*{nit}" type="text" name="nit" id="nit" placeholder="Nit">
+        </div>
+        <button class="btn mt-3">Registrar</button>
+
+    </form>
+    <div class="text-center fs-6">
+        <a href="/adm-empresas">Regresar</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

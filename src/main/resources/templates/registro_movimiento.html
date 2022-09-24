@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/lr_style.css}">
+    <title>Registro de Movimiento</title>
+</head>
+<body>
+<div class="wrapper">
+
+    <div class="text-center mt-4 name" th:if="${movimiento.id==0}">
+        Registro de Movimiento de Dinero
+    </div>
+    <div class="text-center mt-4 name" th:if="${movimiento.id!=0}">
+        Editar Movimiento
+    </div>
+    <form th:action="@{/enterprises/movements}" th:method="post" th:object="${movimiento}" class="p-3 mt-3">
+        <input type="hidden" th:if="${movimiento.id!=0}" th:field="*{id}" th:value="${movimiento.id}">
+         <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input th:field="*{concepto}"  type="text" name="concepto" id="concepto" placeholder="Concepto">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input th:field="*{monto}" type="number" name="monto" id="monto" placeholder="Monto">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input  th:field="*{fecha}" type="date" name="fecha" id="fecha">
+        </div>
+
+        <div th:if="${movimiento.id==null}">
+            <button class="btn mt-3">Registrar</button>
+        </div>
+        <div th:unless="${movimiento.id==null}">
+            <button class="btn mt-3">Editar</button>
+        </div>
+
+    </form>
+    <div class="text-center fs-6">
+        <a href="/adm-movimientos">Regresar</a>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
