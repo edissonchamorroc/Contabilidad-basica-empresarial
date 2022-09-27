@@ -9,25 +9,49 @@
     <title>Ingreso Sistema Contable</title>
 </head>
 <body>
-<h2>Bienvenido <strong th:text="${empleado.nombre}"></strong></h2>
-<div id="main-content">
-    <div class="cont-btn">
-        <div class="btn" sec:authorize="isAuthenticated()">
-            <a href="/adm-movimientos">Sistema de Gestión de Ingresos y Egresos</a>
-        </div>
+<div sec:authorize="isAuthenticated()" class="home-aut">
+    <div>
+        <h2  >Bienvenido        <STRONG th:text="${empleadologin.nombre}"></STRONG></h2>
+        <br>
+        <br><br>
+        <br>
     </div>
-    <div class="cont-btn" >
-        <div class="btn" sec:authorize="isAuthenticated()">
-            <a href="/adm-empleados">Sistema de Gestión de Usuarios</a>
-        </div>
 
-    </div>
-    <div class="cont-btn">
-        <div class="btn" sec:authorize="isAuthenticated()">
-            <a href="/adm-empresas">Sistema de Gestión de Empresas</a>
+    <div id="main-content">
+        <div class="cont-btn">
+            <div class="btn" >
+                <a href="/adm-movimientos">Sistema de Gestión de Ingresos y Egresos</a>
+            </div>
+        </div>
+        <div class="cont-btn" >
+            <div class="btn" >
+                <a href="/adm-empleados">Sistema de Gestión de Usuarios</a>
+            </div>
+
+        </div>
+        <div class="cont-btn">
+            <div class="btn" >
+                <a href="/adm-empresas">Sistema de Gestión de Empresas</a>
+            </div>
         </div>
     </div>
 </div>
+<div sec:authorize="!isAuthenticated()" class="d-flex flex-column align-items-center">
+    <h2>Bienvenido</h2>
+    <br>
+    <br><br>
+    <br>
+    <h3>No estás autenticado, por favor ingresa a la aplicación</h3>
+    <br>
+    <br><br>
+    <br>
+    <div class="cont-btn">
+        <div class="btn" >
+            <a href="/login">Ingresar</a>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 </body>

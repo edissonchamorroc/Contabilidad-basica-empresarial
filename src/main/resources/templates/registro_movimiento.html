@@ -32,6 +32,10 @@
             <input  th:field="*{fecha}" type="date" name="fecha" id="fecha">
         </div>
 
+        <select class="form-select form-select-lg mb-3 t text-center" aria-label=".form-select-lg example" th:field="*{empleado}">
+            <option th:each="e : ${emp}" th:value="${e.id}" th:text="${e.nombre}"></option>
+        </select>
+
         <div th:if="${movimiento.id==null}">
             <button class="btn mt-3">Registrar</button>
         </div>

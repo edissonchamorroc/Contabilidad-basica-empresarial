@@ -38,14 +38,10 @@
             <span class="fas fa-key"></span>
             <input th:field="*{password}" type="password" name="password" id="pasword" placeholder="password">
         </div>
-        <div th:if="${empleado.id==null}">
+        <div>
             <button class="btn mt-3">Registrar</button>
         </div>
-        <div th:unless="${empleado.id==null}">
-            <button class="btn mt-3">Editar</button>
-        </div>
-
-    </form>
+      </form>
     <div class="text-center fs-6">
         <a href="/adm-empleados">Regresar</a>
     </div>

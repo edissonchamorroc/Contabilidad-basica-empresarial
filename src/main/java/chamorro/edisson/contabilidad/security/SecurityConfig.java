@@ -40,27 +40,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/modificar-empresa",
                         "/eliminar-empresa",
                         "/eliminar-movimiento",
-                        "/registro-empresa"
-                ).hasRole("ADMIN")
-                .antMatchers(
-            "/adm-empleados",
+                        "/enterprises**",
+                        "/modificar-empleado*",
+                        "/adm-empleados",
                         "/lista-empleados",
                         "/registro-empleado*",
-                        "/modificar-empleado*",
                         "/adm-empresas",
                         "/lista-empresas",
                         "/adm-movimientos",
-                        "/lista-movimientos"
-                        ,"/home"
+                        "/lista-movimientos",
+                        "/registro-empresa",
+                        "/user"
+
                 )
-                .hasAnyRole("ADMIN","USER")
-                .antMatchers("/login").permitAll()
+                .authenticated()
+                .antMatchers("/home","/","/login").permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/home");
+                .defaultSuccessUrl("/home")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login");
 
     }
 }
