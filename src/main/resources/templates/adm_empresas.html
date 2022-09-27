@@ -44,6 +44,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/home">Home</a>
                         </li>
+                        <li sec:authorize="isAuthenticated()" class="nav-item">
+                            <form th:action="@{/logout}" th:method="post">
+                                <button class="btn btn-primary" type="submit">Cerrar Sesión</button>
+                            </form>
+                        </li>
                     </ul>
                     <!-- Left links -->
                 </div>

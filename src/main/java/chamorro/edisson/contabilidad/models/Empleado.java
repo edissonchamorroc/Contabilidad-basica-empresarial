@@ -1,14 +1,8 @@
 package chamorro.edisson.contabilidad.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -37,10 +31,9 @@ public class Empleado {
     private String password;
 
 
-    @OneToOne
-    private Perfil perfil;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @Transient
+    //@LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "empleado")
     private Collection<MovimientoDinero> movimientoDineros;
 
@@ -49,10 +42,11 @@ public class Empleado {
     private Empresa empresa;
 
 
-    @Enumerated(EnumType.STRING)
+
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "id")
-    private List<Role> roles;
+    @Enumerated(EnumType.STRING)
+    private Collection<Role> roles;
 
     public Empleado(long id,String nombre,String email,String password, List<Role> roles){
         this.id=id;

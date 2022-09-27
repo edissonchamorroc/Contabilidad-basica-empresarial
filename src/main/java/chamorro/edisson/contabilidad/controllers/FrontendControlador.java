@@ -7,6 +7,7 @@ import chamorro.edisson.contabilidad.models.MovimientoDinero;
 import chamorro.edisson.contabilidad.services.EmpleadoService;
 import chamorro.edisson.contabilidad.services.EmpresaService;
 import chamorro.edisson.contabilidad.services.MovimientoService;
+import chamorro.edisson.contabilidad.services.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +25,12 @@ public class FrontendControlador {
     EmpresaService empresaService;
     @Autowired
     MovimientoService movimientoService;
+    @Autowired
+    MyUserDetailsService myUserDetailsService;
 
     @GetMapping(value={"/","/home"})
-    public String home(@ModelAttribute("empleado") Empleado empleado,Model model){
-        model.addAttribute("empleado",empleado);
+    public String home(Model model){
+        model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
         return "home";
     }
 
@@ -38,9 +41,12 @@ public class FrontendControlador {
     }
 
     @PostMapping("/login")
-    public String postLogin(@ModelAttribute("empleado") Empleado empleado){
-        System.out.println(empleado.toString());
-        return "redirect:/home";
+    public void postLogin(@ModelAttribute("empleado") Empleado empleado){
+        //return "redirect:/home";
+    }
+    @PostMapping("/logout")
+    public void postLogout(){
+        //return "redirect:/login";
     }
 
     //-------- mapping para empleados en front
@@ -54,6 +60,7 @@ public class FrontendControlador {
     public String getEmpleados(Model model){
         List<Empleado> listaEmpleados=this.empleadoService.getEmpleados();
         model.addAttribute("empleados",listaEmpleados);
+        model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
         return "lista_empleados";
     }
 
@@ -65,7 +72,7 @@ public class FrontendControlador {
         return "registro_empleado";
     }
 
-    @GetMapping("/modificar-empleado/{id}")//falta modificar este
+    @GetMapping("/modificar-empleado/{id}")
     public String patchEmpleado(@PathVariable("id") long id,Model model){
         List<Empresa> listaEmpresas=this.empresaService.getEmpresas();
         Empleado empleado=empleadoService.getEmpleado(id);
@@ -75,8 +82,8 @@ public class FrontendControlador {
         return "registro_empleado";
     }
 
-    @GetMapping("/eliminar-empleado/{id}")//falta modificar este
-    public String deleteEmpleado(@ModelAttribute long id, Model model){
+    @GetMapping("/eliminar-empleado/{id}")
+    public String deleteEmpleado(@PathVariable("id") long id, Model model){
         this.empleadoService.deleteEmpleado(id);
         List<Empleado> listaEmpleados=this.empleadoService.getEmpleados();
         model.addAttribute("empleados",listaEmpleados);
@@ -92,6 +99,7 @@ public class FrontendControlador {
     @GetMapping("/lista-empresas")
     public String getEmpresas(Model model){
         List<Empresa> listaEmpresas=this.empresaService.getEmpresas();
+        model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
         model.addAttribute("empresas",listaEmpresas);
         return "lista_empresas";
     }
@@ -112,7 +120,7 @@ public class FrontendControlador {
 
 
     @GetMapping("/eliminar-empresa/{id}")
-    public String deleteEmpresa(@ModelAttribute Long id, Model model){
+    public String deleteEmpresa(@PathVariable("id") long id, Model model){
         this.empresaService.deleteEmpresa(id);
         List<Empresa> listaEmpresas=this.empresaService.getEmpresas();
         model.addAttribute("empresas",listaEmpresas);
@@ -129,32 +137,37 @@ public class FrontendControlador {
 
     @GetMapping("/registro-movimiento")
     public String postMovimientos(Model model){
+        model.addAttribute("emp",myUserDetailsService.getEmpleado());
         model.addAttribute("movimiento",new MovimientoDinero());
         return "registro_movimiento";
     }
 
     @GetMapping("/lista-movimientos")
     public String getMovimientos(Model model){
+        List<Empleado> emplist = empleadoService.getEmpleados();
         List<MovimientoDinero> listaMovimientos=this.movimientoService.getMovimientos();
         model.addAttribute("movimientos",listaMovimientos);
+        model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
+        model.addAttribute("empleados",emplist);
         return "lista_movimientos";
     }
 
     @GetMapping("/modificar-movimiento/{id}")
     public String patchMovimiento(@PathVariable("id") long id,Model model){
         MovimientoDinero movimiento = this.movimientoService.getMovimiento(id);
-        model.addAttribute("empresa",movimiento);
+        model.addAttribute("movimiento",movimiento);
+        model.addAttribute("emp",myUserDetailsService.getEmpleado());
         this.movimientoService.patchMovimientoDinero(movimiento.getId(),movimiento);
-        return "registro_empresa";
+        return "registro_movimiento";
     }
 
 
     @GetMapping("/eliminar-movimiento/{id}")
-    public String deleteMovimiento(@ModelAttribute long id, Model model){
+    public String deleteMovimiento(@PathVariable("id") long id, Model model){
         this.movimientoService.deleteMovimiento(id);
         List<MovimientoDinero> listaMovimientos=this.movimientoService.getMovimientos();
         model.addAttribute("movimientos",listaMovimientos);
-        return "lista_empresas";
+        return "lista_movimientos";
     }
 
 }

@@ -26,7 +26,7 @@ public class ControladorEmpresa {
     @GetMapping("")
     public List<Empresa> getEmpresas() {
 
-       return this.servicioEmpresa.getEmpresas();
+        return this.servicioEmpresa.getEmpresas();
 
     }
 
