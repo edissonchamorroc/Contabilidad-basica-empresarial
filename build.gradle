@@ -37,7 +37,7 @@ project.configurations.implementation.setCanBeResolved(true)
 tasks.jar{
 	manifest {
 		attributes(
-				"Main-Class": "chamorro.edisson.contabilidad",
+				"Main-Class": "src.main.java.chamorro.edisson.contabilidad.ContabilidadEmpresarialApplication.java",
 				"Class-Path":  configurations.implementation.collect { it.name }.join(' ')
 		)
 	}
