@@ -42,11 +42,11 @@ public class FrontendControlador {
 
     @PostMapping("/login")
     public void postLogin(@ModelAttribute("empleado") Empleado empleado){
-        //return "redirect:/home";
+
     }
     @PostMapping("/logout")
     public void postLogout(){
-        //return "redirect:/login";
+
     }
 
     //-------- mapping para empleados en front

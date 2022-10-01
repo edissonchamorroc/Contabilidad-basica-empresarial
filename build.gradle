@@ -33,16 +33,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
-project.configurations.implementation.setCanBeResolved(true)
-tasks.jar{
-	manifest {
-		attributes(
-				"Main-Class": "src.main.java.chamorro.edisson.contabilidad.ContabilidadEmpresarialApplication.java",
-				"Class-Path":  configurations.implementation.collect { it.name }.join(' ')
-		)
-	}
-	dependsOn ('dependencies')
-}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
