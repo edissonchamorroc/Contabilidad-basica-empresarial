@@ -16,7 +16,7 @@ o es tiene rol usuario. Ingresa cualquiera de estos perfiles en el login para
 acceder a la aplicación.
 
 - ADMINISTRADOR:   user:admin@gmail.com    password:1234
--USUARIO:          user:usuario@gmail.com  password:1234
+- USUARIO:          user:usuario@gmail.com  password:1234
 
 ![image](https://user-images.githubusercontent.com/71468355/193383863-ab869538-eb0b-4346-8a59-b473bf70efd4.png)
 
