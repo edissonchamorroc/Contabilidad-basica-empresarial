@@ -33,9 +33,10 @@ public class Empleado {
 
 
     @Transient
-    //@LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "empleado")
-    private Collection<MovimientoDinero> movimientoDineros;
+    private Collection<MovimientoDinero> movimientos;
+
+
 
     @ManyToOne
     @JoinColumn(name = "empresa_id")

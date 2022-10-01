@@ -19,6 +19,7 @@ public class MyUserDetails implements UserDetails {
         this.userName=  empleado.getEmail();
         this.authorities= new ArrayList<>();
 
+
         for(Role role: empleado.getRoles()){
             this.authorities.add(new SimpleGrantedAuthority(role.name()));
         }

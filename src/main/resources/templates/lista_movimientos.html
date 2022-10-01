@@ -70,10 +70,10 @@
                     <td th:each="empleado : ${empleados}" th:if="${movimiento.empleado==empleado}"
                         th:text="${empleado.nombre}"></td>
                     <td>
-                        <div class="btn btn-primary"><a class="acolorb"
+                        <div class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')"><a class="acolorb"
                                                         th:href="@{/modificar-movimiento/} + ${movimiento.id}">Modificar</a>
                         </div>
-                        <div class="btn btn-danger"><a class="acolorb"
+                        <div class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')"><a class="acolorb"
                                                        th:href="@{/eliminar-movimiento/} + ${movimiento.id}">Eliminar</a>
                         </div>
                     </td>

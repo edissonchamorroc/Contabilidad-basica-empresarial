@@ -60,7 +60,6 @@ public class FrontendControlador {
     public String getEmpleados(Model model){
         List<Empleado> listaEmpleados=this.empleadoService.getEmpleados();
         model.addAttribute("empleados",listaEmpleados);
-        model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
         return "lista_empleados";
     }
 
@@ -99,7 +98,6 @@ public class FrontendControlador {
     @GetMapping("/lista-empresas")
     public String getEmpresas(Model model){
         List<Empresa> listaEmpresas=this.empresaService.getEmpresas();
-        model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
         model.addAttribute("empresas",listaEmpresas);
         return "lista_empresas";
     }
@@ -147,7 +145,6 @@ public class FrontendControlador {
         List<Empleado> emplist = empleadoService.getEmpleados();
         List<MovimientoDinero> listaMovimientos=this.movimientoService.getMovimientos();
         model.addAttribute("movimientos",listaMovimientos);
-        model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
         model.addAttribute("empleados",emplist);
         return "lista_movimientos";
     }

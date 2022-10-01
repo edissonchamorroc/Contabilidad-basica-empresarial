@@ -14,7 +14,7 @@
     <div class="text-center mt-4 name" th:if="${movimiento.id==0}">
         Registro de Movimiento de Dinero
     </div>
-    <div class="text-center mt-4 name" th:if="${movimiento.id!=0}">
+    <div class="text-center mt-4 name" th:unless="${movimiento.id==0}">
         Editar Movimiento
     </div>
     <form th:action="@{/enterprises/movements}" th:method="post" th:object="${movimiento}" class="p-3 mt-3">
@@ -32,7 +32,7 @@
             <input  th:field="*{fecha}" type="date" name="fecha" id="fecha">
         </div>
 
-        <select class="form-select form-select-lg mb-3 t text-center" aria-label=".form-select-lg example" th:field="*{empleado}">
+        <select hidden class="form-select form-select-lg mb-3 t text-center" aria-label=".form-select-lg example" th:field="*{empleado}">
             <option th:each="e : ${emp}" th:value="${e.id}" th:text="${e.nombre}"></option>
         </select>
 

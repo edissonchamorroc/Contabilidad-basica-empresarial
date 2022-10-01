@@ -19,9 +19,7 @@ public class MyUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         empleado =null;
         try{
-
             empleado=empleadoService.getEmpleado(username);
-            System.out.println(empleado);
             return new MyUserDetails(empleado);
         }catch (Exception e){
             e.printStackTrace();
