@@ -39,6 +39,7 @@ jar {
 				'Main-Class': 'chamorro.edisson.contabilidad.ContabilidadEmpresarialApplication'
 		)
 	}
+
 }
 tasks.named('test') {
 	useJUnitPlatform()
