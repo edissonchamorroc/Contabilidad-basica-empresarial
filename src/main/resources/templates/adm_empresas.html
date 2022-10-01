@@ -48,8 +48,8 @@
     </div>
     <div id="main-content">
         <div class="cont-btn h-50 d-flex align-items-center">
-            <div class="btn">
-                <a href="/registro-empresa" sec:authorize="hasAuthority('ADMIN')">Registrar Empresa</a>
+            <div class="btn" sec:authorize="hasAuthority('ADMIN')">
+                <a href="/registro-empresa" >Registrar Empresa</a>
             </div>
         </div>
         <div class="cont-btn h-50 d-flex align-items-center">
