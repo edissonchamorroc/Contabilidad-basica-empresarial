@@ -43,4 +43,13 @@ solo podrá registrar datos.
 ![image](https://user-images.githubusercontent.com/71468355/193384004-3c2d4a3d-71f6-41c0-8eb8-fc3acb4d245d.png)
 
 
+                                  Arquitectura de la Solucion
+![image](https://user-images.githubusercontent.com/71468355/193384049-a42bb85a-36f0-4247-bc38-a71b2b926c8e.png)
+
+                                  Diagrama Entidad-Relación
+![image](https://user-images.githubusercontent.com/71468355/193384153-cd02b60b-bae1-479f-950d-502cbfd762eb.png)
+                           
+
+
+
 
