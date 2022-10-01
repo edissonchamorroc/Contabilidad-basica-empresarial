@@ -12,13 +12,35 @@ Este proyecto es realizado con frameworks spring boot y thymeleaf.
 
 Para poder ingresar a la aplicación se debe pasar el proceso de login. 
 Por medio de este, se especifica al programa si el empleado logueado es administrador
-o es tiene rol usuario.
+o es tiene rol usuario. Ingresa cualquiera de estos perfiles en el login para
+acceder a la aplicación.
 
 - ADMINISTRADOR:   user:admin@gmail.com    password:1234
 -USUARIO:          user:usuario@gmail.com  password:1234
 
-Si el empleado es administrador, posee facultades para modificar o eliminar, de lo contrario
+![image](https://user-images.githubusercontent.com/71468355/193383863-ab869538-eb0b-4346-8a59-b473bf70efd4.png)
+
+
+Al pasar el login se observa los tres sistemas de gestión con los que 
+cuenta la apliación.
+
+![image](https://user-images.githubusercontent.com/71468355/193383884-643b3f11-0612-4e53-95bd-d624214487ca.png)
+
+Cada sistema de gestión cuenta con dos opciones, registro y el listado que hay en base de datos 
+respectivo a lo que se está gestionando.
+
+![image](https://user-images.githubusercontent.com/71468355/193383925-a63bd270-d750-4890-98f6-b31fa960c941.png)
+
+Cuando se desea registrar, se debe llenar el formulario con los datos solicitados.
+
+![image](https://user-images.githubusercontent.com/71468355/193383990-9a8e744d-da74-4456-b3c3-fc522eefaba6.png)
+
+
+Cuando se elige la opcion listado, se podrá ver lo que hay registrado en la base de datos
+y si el empleado es administrador, posee facultades para modificar o eliminar, de lo contrario
 solo podrá registrar datos.
+
+![image](https://user-images.githubusercontent.com/71468355/193384004-3c2d4a3d-71f6-41c0-8eb8-fc3acb4d245d.png)
 
 
 
