@@ -407,5 +407,6 @@ input[type=number] { -moz-appearance:textfield; }
     #main-content {
         display:flex;
         flex-direction:column;
+        gap: 30px;
     }
 }
