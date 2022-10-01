@@ -21,7 +21,7 @@
         <input type="hidden" th:if="${empleado.id!=0}" th:field="*{id}" th:value="${empleado.id}">
          <div class="form-field d-flex align-items-center">
             <span class="far fa-user"></span>
-            <input th:field="*{nombre}"  type="text" name="userName" id="userName" placeholder="Nombre Completo">
+            <input th:field="*{nombre}"  type="text" name="uName" id="uName" placeholder="Nombre Completo">
         </div>
         <div class="form-field d-flex align-items-center">
             <span class="fas fa-key"></span>
@@ -36,7 +36,7 @@
         </div>
         <div class="form-field d-flex align-items-center">
             <span class="fas fa-key"></span>
-            <input th:field="*{password}" type="password" name="password" id="pasword" placeholder="password">
+            <input th:field="*{password}" type="pw" name="pw" id="pw" placeholder="password">
         </div>
         <div>
             <button class="btn mt-3">Registrar</button>
