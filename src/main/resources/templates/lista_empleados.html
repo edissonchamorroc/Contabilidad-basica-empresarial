@@ -12,35 +12,42 @@
 </head>
 <body>
 <div class="landing-adm">
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/home">Icono</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/adm-empresas">Gestión Empresas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/adm-movimientos">Gestión Movimientos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/adm-empleados">Regresar</a>
-                        </li>
-                    </ul>
+    <div id="cont-nav">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/home">Icono</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/adm-empresas">Gestión Empresas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/adm-movimientos">Gestión Movimientos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/adm-empleados">Regresar</a>
+                            </li>
+                            <li sec:authorize="isAuthenticated()" class="nav-item">
+                                <form th:action="@{/logout}" th:method="post">
+                                    <button class="btn btn-primary" type="submit">Cerrar Sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
+    </div>
+
     <div class="d-flex justify-content-end">
-        <div class="btn btn-primary"><a class="acolorb" th:href="@{/registro-empleado}">Agregar Nuevo</a>
-        </div>
+        <div class="btn btn-primary"><a class="acolorb" th:href="@{/registro-empleado}">Agregar Nuevo</a></div>
     </div>
     <div class="tablas rounded">
         <div class="centrado-block">
