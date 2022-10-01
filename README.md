@@ -7,7 +7,7 @@ con el fin de evitar riesgos de corrupción. Adicionalmente, debido a que las tr
 el sistema permite llevar una trazabilidad de quién registró cada transacción, por lo cual el sistema debe contar con un sistema de autenticación.
 Este proyecto es realizado con frameworks spring boot y thymeleaf.
 
-Página de Inicio
+                                           Página de Inicio
 ![image](https://user-images.githubusercontent.com/71468355/193381248-6adb7c5d-97e5-4696-9329-a87aa394627f.png)
 
 Para poder ingresar a la aplicación se debe pasar el proceso de login. 
