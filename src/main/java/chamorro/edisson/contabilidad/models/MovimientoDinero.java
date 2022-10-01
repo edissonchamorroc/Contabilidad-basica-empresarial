@@ -24,7 +24,7 @@ public class MovimientoDinero {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "empleado_id")
+//    @JoinColumn(name = "empleado_id")
     private Empleado empleado;
 
     public MovimientoDinero(    ) {

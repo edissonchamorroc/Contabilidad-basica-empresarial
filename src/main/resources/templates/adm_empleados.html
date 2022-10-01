@@ -47,7 +47,7 @@
     </div>
     <div id="main-content">
         <div class="cont-btn h-50 d-flex align-items-center">
-            <div class="btn">
+            <div class="btn" sec:authorize="hasAuthority('ADMIN')">
                 <a href="/registro-empleado">Registrar Empleado</a>
             </div>
         </div>

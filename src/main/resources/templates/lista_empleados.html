@@ -48,7 +48,7 @@
     </div>
 
     <div class="d-flex justify-content-end">
-        <div class="btn btn-primary" th:each="rol:${empleadologin.roles}" th:if="${rol=='ADMIN'}"><a class="acolorb" th:href="@{/registro-empleado}">Agregar Nuevo</a></div>
+        <div class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')"><a class="acolorb" th:href="@{/registro-empleado}">Agregar Nuevo</a></div>
     </div>
     <div class="tablas rounded">
         <div class="centrado-block">
@@ -58,6 +58,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Empresa</th>
                     <th scope="col">Acciones</th>
                 </tr>
                 </thead>
@@ -67,12 +68,13 @@
                     <th scope="row" th:text="${empleadoStat.index}+1"></th>
                     <td th:text="${empleado.nombre}" class="w33"></td>
                     <td th:text="${empleado.email}" class="w33"></td>
+                    <td th:text="${empleado.empresa.nombre}" class="w33"></td>
                     <td class="w33">
-                        <div class="btn btn-primary" th:each="rol:${empleadologin.roles}" th:if="${rol=='ADMIN'}"><a class="acolorb"
-                                                        th:href="@{/modificar-empleado/} + ${empleado.id}">Modificar</a>
+                        <div class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">
+                            <a class="acolorb" th:href="@{/modificar-empleado/} + ${empleado.id}">Modificar</a>
                         </div>
-                        <div class="btn btn-danger" th:each="rol:${empleadologin.roles}" th:if="${rol=='ADMIN'}"><a class="acolorb"
-                                                       th:href="@{/eliminar-empleado/} + ${empleado.id}">Eliminar</a>
+                        <div class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')">
+                            <a class="acolorb" th:href="@{/eliminar-empleado/} + ${empleado.id}">Eliminar</a>
                         </div>
                     </td>
                 </tr>
