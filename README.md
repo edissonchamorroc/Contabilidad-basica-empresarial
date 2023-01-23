@@ -1,4 +1,4 @@
-# contabilidad_app
+# Contabilidad_app
 
 Aplicativo web administrador el cual puede gestionar los ingresos y egresos de una empresa a través de un CRUD implementado en spring boot y con comunicación a base de datos postgre. Se implementará una configuración de seguridad para gestionar roles de usuarios y con ello cierto acceso a las funcionalidades del sistema. 
 
