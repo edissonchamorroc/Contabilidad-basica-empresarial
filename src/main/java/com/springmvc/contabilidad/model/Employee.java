@@ -42,4 +42,8 @@ public class Employee {
     private List<Transaction> transactions = new ArrayList<>();
 
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_r")
+    private Perfil perfil;
+
 }

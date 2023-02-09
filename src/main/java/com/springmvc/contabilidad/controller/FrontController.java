@@ -6,6 +6,7 @@ import com.springmvc.contabilidad.model.Enterprise;
 import com.springmvc.contabilidad.model.Transaction;
 import com.springmvc.contabilidad.service.EmployeeService;
 import com.springmvc.contabilidad.service.EnterpriseService;
+import com.springmvc.contabilidad.service.PefilService;
 import com.springmvc.contabilidad.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ public class FrontController {
     EmployeeService employeeService;
     @Autowired
     TransactionService transactionService;
+    @Autowired
+    PefilService pefilService;
 
     @GetMapping(value = {"/", "/home"})
     public String home(Model model) {
@@ -48,6 +51,8 @@ public class FrontController {
 
         model.addAttribute("enterprises", this.enterpriseService.getEnterprises());
 
+        model.addAttribute("roles",this.pefilService.getRoles());
+
         return "registro_empleado";
     }
 
@@ -57,6 +62,8 @@ public class FrontController {
         model.addAttribute("employee", employeeService.getEmployee(id));
 
         model.addAttribute("enterprises", this.enterpriseService.getEnterprises());
+
+        model.addAttribute("roles",this.pefilService.getRoles());
 
         this.employeeService.updateEmployee(id, employeeService.getEmployee(id));
 
