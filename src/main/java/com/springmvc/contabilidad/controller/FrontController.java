@@ -27,6 +27,12 @@ public class FrontController {
     @Autowired
     PefilService pefilService;
 
+    @GetMapping(value = {"/login"})
+    public String login(Model model) {
+
+        return "login";
+    }
+
     @GetMapping(value = {"/", "/home"})
     public String home(Model model) {
         //model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
