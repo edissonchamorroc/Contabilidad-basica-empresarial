@@ -2,16 +2,17 @@ package com.springmvc.contabilidad.service;
 
 import com.springmvc.contabilidad.model.Transaction;
 import com.springmvc.contabilidad.repository.TransactionRepository;
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.util.List;
 
-@AllArgsConstructor
-@Service
-public class TransactionService {
 
+@Service
+public class TransactionService implements ITransactionService{
+
+    @Autowired
     TransactionRepository transactionRepository;
 
     public List<Transaction> getTransactions() {

@@ -2,18 +2,21 @@ package com.springmvc.contabilidad.service;
 
 import com.springmvc.contabilidad.model.Employee;
 import com.springmvc.contabilidad.repository.EmployeeRepository;
-import lombok.AllArgsConstructor;
+import com.springmvc.contabilidad.utility.CryptPasswordEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 import java.sql.Date;
 import java.util.List;
 
-@AllArgsConstructor
+
 @Service
 public class EmployeeService {
 
+    @Autowired
     EmployeeRepository employeeRepository;
+    @Autowired
+    PefilService pefilService;
 
 
     public List<Employee> getEmployees() {
@@ -28,7 +31,7 @@ public class EmployeeService {
 
     }
 
-    public Employee getEmployeeByEmail(String email){
+    public Employee getEmployeeByEmail(String email) {
 
         return employeeRepository.findByEmail(email);
 
@@ -36,9 +39,13 @@ public class EmployeeService {
 
     public Employee saveEmployee(Employee newEmployee) {
 
-        long millis=System.currentTimeMillis();
+        long millis = System.currentTimeMillis();
 
         newEmployee.setDateCreation(new Date(millis));
+
+        newEmployee.setPassword(CryptPasswordEncoder.getPasswordEncoder(newEmployee.getPassword()));
+
+        newEmployee.setPerfil(pefilService.getRoles().get(1));
 
         return this.employeeRepository.save(newEmployee);
 
@@ -50,7 +57,7 @@ public class EmployeeService {
 
         if (this.employeeRepository.findById(id).isPresent()) {
 
-            long millis=System.currentTimeMillis();
+            long millis = System.currentTimeMillis();
 
             if (newEmployee.getName() != null) EmployeeUpdate.setName(newEmployee.getName());
 
