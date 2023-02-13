@@ -75,7 +75,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-empleados">Listado empleados</a>
-                    <a class="collapse-item" href="/registro-empleado">Registrar</a>
+                    <a class="collapse-item" th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                       href="/registro-empleado">Registrar</a>
                 </div>
             </div>
         </li>
@@ -93,7 +94,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-empresas">Listado empresas</a>
-                    <a class="collapse-item" href="/registro-empresa">Registrar</a>
+                    <a class="collapse-item" th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                       href="/registro-empresa">Registrar</a>
                 </div>
             </div>
         </li>
@@ -111,7 +113,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-movimientos">Listado transaciones</a>
-                    <a class="collapse-item" href="/registro-movimiento">Registrar</a>
+                    <a class="collapse-item"
+                       href="/registro-movimiento">Registrar</a>
                 </div>
             </div>
         </li>
@@ -151,7 +154,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                  th:text="${loginEmployee.name}"></span>
                             <span class="material-symbols-outlined">
                                     account_circle
                                 </span>
@@ -176,11 +180,13 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Utilidades Actuales</h1>
+                    <h2 class="h3 mb-0 text-gray-800">Transacciones realizadas por </h2>
+                    <br>
+                    <h2 class="h3 mb-0 text-gray-800" th:text="${loginEmployee.name}"></h2>
                 </div>
 
                 <!-- Content Row -->
-                <div class="row"  th:each="enterprise : ${enterprises}">
+                <div class="row" th:each="transaction : ${loginEmployee.transactions}">
 
 
                     <!-- Earnings (Monthly) Card Example -->
@@ -189,15 +195,15 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
+                                        Concepto:
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1"
-                                             th:text="${enterprise.name}"
+                                             th:text="${transaction.concept}"
 
                                         >
                                         </div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800"
-                                             th:each="employee : ${enterprise.employees}">
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
                                             <div
-                                                 th:text="${#aggregates.sum(employee.transactions.![cuantity])}">
+                                                    th:text="${transaction.cuantity}">
                                             </div>
                                         </div>
                                     </div>

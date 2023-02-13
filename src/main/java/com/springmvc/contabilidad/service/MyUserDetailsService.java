@@ -22,11 +22,12 @@ public class MyUserDetailsService implements IMyUserDetailsService {
     @Autowired
     EmployeeRepository employeeRepository;
 
+    private Employee employee;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Employee employee = employeeRepository.findByEmail(username);
+        employee = employeeRepository.findByEmail(username);
 
         return new User(employee.getEmail(), employee.getPassword(), authoritiesToRoles(employee.getPerfil()));
     }
@@ -37,4 +38,8 @@ public class MyUserDetailsService implements IMyUserDetailsService {
 
     }
 
+    @Override
+    public Employee getUserDetailsService() {
+        return employee;
+    }
 }

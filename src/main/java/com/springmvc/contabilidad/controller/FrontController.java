@@ -4,10 +4,7 @@ package com.springmvc.contabilidad.controller;
 import com.springmvc.contabilidad.model.Employee;
 import com.springmvc.contabilidad.model.Enterprise;
 import com.springmvc.contabilidad.model.Transaction;
-import com.springmvc.contabilidad.service.EmployeeService;
-import com.springmvc.contabilidad.service.EnterpriseService;
-import com.springmvc.contabilidad.service.PefilService;
-import com.springmvc.contabilidad.service.TransactionService;
+import com.springmvc.contabilidad.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +22,8 @@ public class FrontController {
     TransactionService transactionService;
     @Autowired
     PefilService pefilService;
+    @Autowired
+    IMyUserDetailsService userDetailsService;
 
     @GetMapping(value = {"/login"})
     public String login(Model model) {
@@ -34,8 +33,12 @@ public class FrontController {
 
     @GetMapping(value = {"/", "/home"})
     public String home(Model model) {
-        //model.addAttribute("empleadologin",myUserDetailsService.getEmpleado());
+
+        model.addAttribute("loginEmployee",
+                this.employeeService.getEmployee(userDetailsService.getUserDetailsService().getId()));
+
         model.addAttribute("enterprises",this.enterpriseService.getEnterprises());
+
         return "index";
     }
 
@@ -43,6 +46,9 @@ public class FrontController {
 
     @GetMapping("/lista-empleados")
     public String getEmployees(Model model) {
+
+        model.addAttribute("loginEmployee",
+                this.employeeService.getEmployee(userDetailsService.getUserDetailsService().getId()));
 
         model.addAttribute("employees", this.employeeService.getEmployees());
 
@@ -93,6 +99,9 @@ public class FrontController {
 
     public String getEnterprises(Model model) {
 
+        model.addAttribute("loginEmployee",
+                this.employeeService.getEmployee(userDetailsService.getUserDetailsService().getId()));
+
         model.addAttribute("enterprises", this.enterpriseService.getEnterprises());
 
         return "lista_empresas";
@@ -133,7 +142,9 @@ public class FrontController {
 
     @GetMapping("/registro-movimiento")
     public String postTransactions(Model model){
-        //model.addAttribute("emp",myUserDetailsService.getEmpleado());
+
+        model.addAttribute("loginEmployee",
+                this.employeeService.getEmployee(userDetailsService.getUserDetailsService().getId()));
 
         model.addAttribute("transaction",new Transaction());
 
@@ -143,8 +154,10 @@ public class FrontController {
     @GetMapping("/lista-movimientos")
     public String getTransactions(Model model){
 
+        model.addAttribute("loginEmployee",
+                this.employeeService.getEmployee(userDetailsService.getUserDetailsService().getId()));
+
         model.addAttribute("transactions",this.transactionService.getTransactions());
-        model.addAttribute("employees",this.employeeService.getEmployees());
         return "lista_transacciones";
     }
 

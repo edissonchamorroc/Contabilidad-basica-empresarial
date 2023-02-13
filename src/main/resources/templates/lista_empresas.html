@@ -73,7 +73,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-empleados">Listado empleados</a>
-                    <a class="collapse-item" href="/registro-empleado">Registrar</a>
+                    <a class="collapse-item" th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                       href="/registro-empleado">Registrar</a>
                 </div>
             </div>
         </li>
@@ -91,7 +92,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-empresas">Listado empresas</a>
-                    <a class="collapse-item" href="/registro-empresa">Registrar</a>
+                    <a class="collapse-item" th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                       href="/registro-empresa">Registrar</a>
                 </div>
             </div>
         </li>
@@ -109,7 +111,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-movimientos">Listado transaciones</a>
-                    <a class="collapse-item" href="/registro-movimiento">Registrar</a>
+                    <a class="collapse-item"
+                       href="/registro-movimiento">Registrar</a>
                 </div>
             </div>
         </li>
@@ -152,7 +155,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                  th:text="${loginEmployee.name}"></span>
                             <span class="material-symbols-outlined">
                                     account_circle
                                 </span>
@@ -214,10 +218,14 @@
                                     <td th:text="${enterprise.dateCreation}"></td>
                                     <td th:text="${enterprise.dateUpdate}"></td>
                                     <td>
-                                        <a th:href="@{/modificar-empresa/} + ${enterprise.id}" class="btn btn-warning btn-circle">
+                                        <a th:href="@{/modificar-empresa/} + ${enterprise.id}"
+                                           th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                                           class="btn btn-warning btn-circle">
                                             <i class="fas fa-exclamation-triangle"></i>
                                         </a>
-                                        <a th:href="@{/eliminar-empresa/} + ${enterprise.id}" class="btn btn-danger btn-circle">
+                                        <a th:href="@{/eliminar-empresa/} + ${enterprise.id}"
+                                           th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                                           class="btn btn-danger btn-circle">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
