@@ -1,13 +1,14 @@
 package com.springmvc.contabilidad.model;
 
 import lombok.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@ToString
 @Getter
 @Setter
 @AllArgsConstructor
@@ -38,11 +39,11 @@ public class Employee {
     @JoinColumn(name = "id_c")
     private Enterprise enterprise;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Transaction> transactions = new ArrayList<>();
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_r")
     private Perfil perfil;
 

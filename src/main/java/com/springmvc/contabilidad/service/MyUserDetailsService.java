@@ -11,24 +11,22 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class MyUserDetailsService implements IMyUserDetailsService {
 
     @Autowired
     EmployeeRepository employeeRepository;
-    @Autowired
-    PefilService pefilService;
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Employee employee = employeeRepository.findByEmail(username);
-
-        if (employee != null) throw new UsernameNotFoundException("Usuario no válido");
 
         return new User(employee.getEmail(), employee.getPassword(), authoritiesToRoles(employee.getPerfil()));
     }
