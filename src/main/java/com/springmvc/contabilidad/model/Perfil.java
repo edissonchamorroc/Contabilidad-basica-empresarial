@@ -23,7 +23,7 @@ public class Perfil {
 
     private String name;
 
-    @OneToMany(mappedBy = "perfil",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "perfil",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Employee> employees = new ArrayList<>();
 
 }
