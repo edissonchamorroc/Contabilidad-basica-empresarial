@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Lista Empresas</title>
+    <title>Lista Transacciones</title>
 
     <!-- iconos -->
     <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
@@ -73,7 +73,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-empleados">Listado empleados</a>
-                    <a class="collapse-item" href="/registro-empleado">Registrar</a>
+                    <a class="collapse-item" th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                       href="/registro-empleado">Registrar</a>
                 </div>
             </div>
         </li>
@@ -91,7 +92,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-empresas">Listado empresas</a>
-                    <a class="collapse-item" href="/registro-empresa">Registrar</a>
+                    <a class="collapse-item" th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                       href="/registro-empresa">Registrar</a>
                 </div>
             </div>
         </li>
@@ -109,7 +111,8 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Acciones: </h6>
                     <a class="collapse-item" href="/lista-movimientos">Listado transaciones</a>
-                    <a class="collapse-item" href="/registro-movimiento">Registrar</a>
+                    <a class="collapse-item"
+                       href="/registro-movimiento">Registrar</a>
                 </div>
             </div>
         </li>
@@ -151,7 +154,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usuario</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                                  th:text="${loginEmployee.name}"></span>
                             <span class="material-symbols-outlined">
                                     account_circle
                                 </span>
@@ -175,12 +179,12 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Empresas</h1>
+                <h1 class="h3 mb-2 text-gray-800">Transacciones</h1>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Empresas registradas</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Transacciones realizadas</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -206,18 +210,21 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                <tr th:each="transaction : ${transactions}">
+                                <tr th:each="transaction : ${loginEmployee.transactions}">
                                     <td th:text="${transaction.concept}"></td>
-                                    <td th:each="employee : ${employees}" th:if="${transaction.employee==employee}"
-                                        th:text="${employee.name}"></td>
+                                    <td th:text="${loginEmployee.name}"></td>
                                     <td th:text="${transaction.dateCreation}"></td>
                                     <td th:text="${transaction.dateUpdate}"></td>
                                     <td th:text="${transaction.cuantity}"></td>
                                     <td>
-                                        <a th:href="@{/modificar-movimiento/} + ${transaction.id}" class="btn btn-warning btn-circle">
+                                        <a th:href="@{/modificar-movimiento/} + ${transaction.id}"
+                                           th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                                           class="btn btn-warning btn-circle">
                                             <i class="fas fa-exclamation-triangle"></i>
                                         </a>
-                                        <a th:href="@{/eliminar-movimiento/} + ${transaction.id}" class="btn btn-danger btn-circle">
+                                        <a th:href="@{/eliminar-movimiento/} + ${transaction.id}"
+                                           th:if="${loginEmployee.perfil.name == 'ADMIN'}"
+                                           class="btn btn-danger btn-circle">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>

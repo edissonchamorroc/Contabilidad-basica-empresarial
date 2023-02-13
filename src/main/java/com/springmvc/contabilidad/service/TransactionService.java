@@ -14,6 +14,8 @@ public class TransactionService implements ITransactionService{
 
     @Autowired
     TransactionRepository transactionRepository;
+    @Autowired
+    IMyUserDetailsService userDetailsService;
 
     public List<Transaction> getTransactions() {
 
@@ -31,6 +33,8 @@ public class TransactionService implements ITransactionService{
         long millis=System.currentTimeMillis();
 
         newTransaction.setDateCreation(new Date(millis));
+
+        newTransaction.setEmployee(userDetailsService.getUserDetailsService());
 
         return this.transactionRepository.save(newTransaction);
     }
