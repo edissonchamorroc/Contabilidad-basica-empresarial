@@ -204,7 +204,7 @@
                                     <th>Registrador</th>
                                     <th>Fecha registro</th>
                                     <th>Fecha actualización</th>
-                                    <th>Monto</th>
+                                    <td th:text="${#aggregates.sum(loginEmployee.transactions.![cuantity])}">
                                     <th>Acciones</th>
                                 </tr>
                                 </tfoot>
@@ -228,7 +228,6 @@
                                         </a>
                                     </td>
                                 </tr>
-
                                 </tbody>
                             </table>
                         </div>
