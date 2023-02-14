@@ -74,8 +74,11 @@
                             </button>
 
                         </form>
-                        <div class="text-center">
+                        <div class="text-center" th:if="${loginEmployee==null}">
                             <a class="small" href="/login.html">Ya tienes cuenta? Ingresa aquí!</a>
+                        </div>
+                        <div class="text-center" th:if="${loginEmployee!=null}">
+                            <a class="small" href="/home">Regresar!</a>
                         </div>
                     </div>
                 </div>
