@@ -58,6 +58,9 @@ public class FrontController {
     @GetMapping("/registro-empleado")
     public String postEmployee(Model model) {
 
+        model.addAttribute("loginEmployee",
+                userDetailsService.getUserDetailsService());
+
         model.addAttribute("employee", new Employee());
 
         model.addAttribute("enterprises", this.enterpriseService.getEnterprises());
