@@ -1,20 +1,29 @@
 # contabilidad_empresarial
-Proyecto en spring boot y thymeleaf en el cual se refleja un CRUD en busca de organizar, de manera basica, los ingresos y egresos de una Empresa.
+
+Proyecto desarrollado con spring boot, Spring Web, Spring Security, thymeleaf y base de datos postgree en nube, en el cual se refleja un CRUD en busca de organizar y controlar, de manera basica, los ingresos y egresos de una Empresa realizado por medio de los empleados autorizados.
+
+Se trabajo con la arquitectura MVC y patrón de desarrollo TDD.
+
+Se realizaron pruebas unitarias en JUnit 5 y Mockito.
 
 ![image](https://user-images.githubusercontent.com/71468355/217278761-24436226-de5d-4bb6-9275-1cea82a8fa3a.png)
 
-El proyecto usa Java 1.8, Maven y Springboot 2.7.8.
+El proyecto usa Java 1.8, Maven y Springboot 2.7.8., Spring Security, JUnit5, Mockito, Thymeleaf y postgre en nube (supabase.com).
 
-Además se encuentra desplegado en AWS EC2 : http://54.237.78.115/
+Además se encuentra desplegado en AWS EC2 : http://35.153.18.19/
 
-En escencia el proyecto consiste de un apartado en donde se pueden subir imagenes a través de la funcionalidad drag and drop,
-o a través del sistema de buscar en el sistema de archivos.
+Lo que se busca con este proyecto, es generar un dashboard básico con el cual se lleve un control de transacciones financieras realizada por
+los empleados de la respectiva empresa. Dentro de las lmitaciones como usuario normal, solo está el poder crear un perfil y registrar transacciones.
+Como usuario administrador, está el poder registrar, modificar o eliminar los objetos empresa, empleado y transacciones.
 
 ## Estructura de carpetas del proyecto
 
 * **Codigo Java**: consta del `pom.xml` y la carpeta `src`
 * **Herramientas externas**: 
+    * *Spring Security: Libreria necesaria para autenticación y autorización.
     * *base de datos postgree*: La base de datos empleado está en la nube. Se puede crear una en https://supabase.com/  
+    * *JUnit 5: Herramienta para realizar pruebas unitarias.
+    * *Mockito: Herramienta para desligar dependencias en pruebas unitarias.
 * **Documentacion**: La funcionalidad del programa es práctica y se puede aplicar en la sesión de pruebas.
 
 ---
@@ -28,16 +37,17 @@ o a través del sistema de buscar en el sistema de archivos.
 
 ## Pruebas
 
-Ir al siguiente link: [http://54.237.78.115/](http://54.237.78.115/) para ver está vista inicial
+Ir al siguiente link: [http://35.153.18.19/](http://35.153.18.19/) para ver está vista inicial
 
-![image](https://user-images.githubusercontent.com/71468355/217281443-2414460e-7787-4976-8d6a-104efa19019c.png)
+![image](https://user-images.githubusercontent.com/71468355/219412819-6746f050-21be-41e7-b855-b7ad61c9ab3b.png)
 
+Para usar la aplicación web debes ingresar tu correo y contrasena registrada en base de datos
+o si aún no estás registrado, debes registrar tu usuario siguien el enlace "Create una cuenta!".
+Posteriormente deberás llenar los siguientes datoos:
 
-Para usar la aplicación web debes ingresar una imagen a través de la funcionalidad
-drag and drop (arrastrar y soltar), en el área señalada, o a través del boton "upload a file"
-y buscando dentro de tus archivos la imagen indicada.
+![image](https://user-images.githubusercontent.com/71468355/219413365-2538d0eb-8ff5-431a-9201-f7c829ba3485.png)
 
-Cabe resaltar que la apliación solo soporta imagenes de hasta 10MB.
+Finalmente podras realizar un login y puedes interactura con la aplicación web.
 
 ---
 
