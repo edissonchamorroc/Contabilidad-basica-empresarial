@@ -42,12 +42,12 @@ Ir al siguiente link: [http://35.153.18.19/](http://35.153.18.19/) para ver est�
 ![image](https://user-images.githubusercontent.com/71468355/219412819-6746f050-21be-41e7-b855-b7ad61c9ab3b.png)
 
 Para usar la aplicación web debes ingresar tu correo y contrasena registrada en base de datos
-o si aún no estás registrado, debes registrar tu usuario siguien el enlace "Create una cuenta!".
-Posteriormente deberás llenar los siguientes datoos:
+o si aún no estás registrado, debes registrar tu usuario siguiendo el enlace "Create una cuenta!".
+Posteriormente deberás llenar los siguientes datos:
 
 ![image](https://user-images.githubusercontent.com/71468355/219413365-2538d0eb-8ff5-431a-9201-f7c829ba3485.png)
 
-Finalmente podras realizar un login y puedes interactura con la aplicación web.
+Finalmente podras realizar un login e interactura con la aplicación web.
 
 ---
 
