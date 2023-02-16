@@ -1,4 +1,4 @@
-# contabilidad_empresarial
+# Contabilidad básica empresarial
 
 Proyecto desarrollado con spring boot, Spring Web, Spring Security, thymeleaf y base de datos postgree en nube, en el cual se refleja un CRUD en busca de organizar y controlar, de manera basica, los ingresos y egresos de una Empresa realizado por medio de los empleados autorizados.
 
