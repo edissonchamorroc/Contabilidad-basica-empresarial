@@ -10,8 +10,6 @@ Se realizaron pruebas unitarias en JUnit 5 y Mockito.
 
 El proyecto usa Java 1.8, Maven y Springboot 2.7.8., Spring Security, JUnit5, Mockito, Thymeleaf y postgre en nube (supabase.com).
 
-Además se encuentra desplegado en AWS EC2 : http://35.153.18.19/
-
 Lo que se busca con este proyecto, es generar un dashboard básico con el cual se lleve un control de transacciones financieras realizada por
 los empleados de la respectiva empresa. Dentro de las lmitaciones como usuario normal, solo está el poder crear un perfil y registrar transacciones.
 Como usuario administrador, está el poder registrar, modificar o eliminar los objetos empresa, empleado y transacciones.
@@ -36,8 +34,6 @@ Como usuario administrador, está el poder registrar, modificar o eliminar los o
 ---
 
 ## Pruebas
-
-Ir al siguiente link: [http://35.153.18.19/](http://35.153.18.19/) para ver está vista inicial
 
 ![image](https://user-images.githubusercontent.com/71468355/219412819-6746f050-21be-41e7-b855-b7ad61c9ab3b.png)
 
